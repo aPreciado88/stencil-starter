@@ -1,0 +1,21 @@
+:host {
+  display: block;
+}
+
+.progress-wrapper {
+  padding: 0.18rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 0.18rem;
+}
+
+.progress-bar {
+  height: 1.25rem;
+	background-color: #4d6297;  
+  border-radius: 0.18rem;
+  animation: loadAnimation 10s;
+}
+
+@keyframes loadAnimation {
+  from { width: 0 }
+  to   { width: 100% }
+}

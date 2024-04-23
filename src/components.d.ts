@@ -6,6 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface EmojiRain {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -20,19 +22,83 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface ProgressBar {
+    }
+    interface RadioButton {
+        "checked": boolean;
+        "label": string;
+    }
+    interface RadioButtonGroup {
+        "selectedItem": HTMLRadioButtonElement;
+    }
+    interface ToggleButton {
+        "checked": boolean;
+    }
+}
+export interface RadioButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLRadioButtonElement;
 }
 declare global {
+    interface HTMLEmojiRainElement extends Components.EmojiRain, HTMLStencilElement {
+    }
+    var HTMLEmojiRainElement: {
+        prototype: HTMLEmojiRainElement;
+        new (): HTMLEmojiRainElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLProgressBarElement extends Components.ProgressBar, HTMLStencilElement {
+    }
+    var HTMLProgressBarElement: {
+        prototype: HTMLProgressBarElement;
+        new (): HTMLProgressBarElement;
+    };
+    interface HTMLRadioButtonElementEventMap {
+        "radioButtonClick": void;
+    }
+    interface HTMLRadioButtonElement extends Components.RadioButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLRadioButtonElementEventMap>(type: K, listener: (this: HTMLRadioButtonElement, ev: RadioButtonCustomEvent<HTMLRadioButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLRadioButtonElementEventMap>(type: K, listener: (this: HTMLRadioButtonElement, ev: RadioButtonCustomEvent<HTMLRadioButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLRadioButtonElement: {
+        prototype: HTMLRadioButtonElement;
+        new (): HTMLRadioButtonElement;
+    };
+    interface HTMLRadioButtonGroupElement extends Components.RadioButtonGroup, HTMLStencilElement {
+    }
+    var HTMLRadioButtonGroupElement: {
+        prototype: HTMLRadioButtonGroupElement;
+        new (): HTMLRadioButtonGroupElement;
+    };
+    interface HTMLToggleButtonElement extends Components.ToggleButton, HTMLStencilElement {
+    }
+    var HTMLToggleButtonElement: {
+        prototype: HTMLToggleButtonElement;
+        new (): HTMLToggleButtonElement;
+    };
     interface HTMLElementTagNameMap {
+        "emoji-rain": HTMLEmojiRainElement;
         "my-component": HTMLMyComponentElement;
+        "progress-bar": HTMLProgressBarElement;
+        "radio-button": HTMLRadioButtonElement;
+        "radio-button-group": HTMLRadioButtonGroupElement;
+        "toggle-button": HTMLToggleButtonElement;
     }
 }
 declare namespace LocalJSX {
+    interface EmojiRain {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -47,15 +113,38 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface ProgressBar {
+    }
+    interface RadioButton {
+        "checked"?: boolean;
+        "label"?: string;
+        "onRadioButtonClick"?: (event: RadioButtonCustomEvent<void>) => void;
+    }
+    interface RadioButtonGroup {
+        "selectedItem"?: HTMLRadioButtonElement;
+    }
+    interface ToggleButton {
+        "checked"?: boolean;
+    }
     interface IntrinsicElements {
+        "emoji-rain": EmojiRain;
         "my-component": MyComponent;
+        "progress-bar": ProgressBar;
+        "radio-button": RadioButton;
+        "radio-button-group": RadioButtonGroup;
+        "toggle-button": ToggleButton;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "emoji-rain": LocalJSX.EmojiRain & JSXBase.HTMLAttributes<HTMLEmojiRainElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "progress-bar": LocalJSX.ProgressBar & JSXBase.HTMLAttributes<HTMLProgressBarElement>;
+            "radio-button": LocalJSX.RadioButton & JSXBase.HTMLAttributes<HTMLRadioButtonElement>;
+            "radio-button-group": LocalJSX.RadioButtonGroup & JSXBase.HTMLAttributes<HTMLRadioButtonGroupElement>;
+            "toggle-button": LocalJSX.ToggleButton & JSXBase.HTMLAttributes<HTMLToggleButtonElement>;
         }
     }
 }
