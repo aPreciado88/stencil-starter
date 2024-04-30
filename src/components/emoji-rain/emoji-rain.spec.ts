@@ -8,9 +8,9 @@ describe('emoji-rain', () => {
       html: `<emoji-rain></emoji-rain>`,
     });
     expect(page.root).toEqualHtml(`
-      <emoji-rain>
+      <emoji-rain id="emoji-rain">
         <mock:shadow-root>
-          <slot></slot>
+          <canvas id="canvas" class="hidden"></canvas>
         </mock:shadow-root>
       </emoji-rain>
     `);

@@ -7,6 +7,10 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface EmojiRain {
+        "active": boolean;
+        "drops": number;
+        "makeItRain": () => Promise<void>;
+        "stopTheRain": () => Promise<void>;
     }
     interface MyComponent {
         /**
@@ -30,6 +34,11 @@ export namespace Components {
     }
     interface RadioButtonGroup {
         "selectedItem": HTMLRadioButtonElement;
+    }
+    interface StarRating {
+        "color": string;
+        "currentRating": number;
+        "maxStars": number;
     }
     interface ToggleButton {
         "checked": boolean;
@@ -81,6 +90,12 @@ declare global {
         prototype: HTMLRadioButtonGroupElement;
         new (): HTMLRadioButtonGroupElement;
     };
+    interface HTMLStarRatingElement extends Components.StarRating, HTMLStencilElement {
+    }
+    var HTMLStarRatingElement: {
+        prototype: HTMLStarRatingElement;
+        new (): HTMLStarRatingElement;
+    };
     interface HTMLToggleButtonElement extends Components.ToggleButton, HTMLStencilElement {
     }
     var HTMLToggleButtonElement: {
@@ -93,11 +108,14 @@ declare global {
         "progress-bar": HTMLProgressBarElement;
         "radio-button": HTMLRadioButtonElement;
         "radio-button-group": HTMLRadioButtonGroupElement;
+        "star-rating": HTMLStarRatingElement;
         "toggle-button": HTMLToggleButtonElement;
     }
 }
 declare namespace LocalJSX {
     interface EmojiRain {
+        "active"?: boolean;
+        "drops"?: number;
     }
     interface MyComponent {
         /**
@@ -123,6 +141,11 @@ declare namespace LocalJSX {
     interface RadioButtonGroup {
         "selectedItem"?: HTMLRadioButtonElement;
     }
+    interface StarRating {
+        "color"?: string;
+        "currentRating"?: number;
+        "maxStars"?: number;
+    }
     interface ToggleButton {
         "checked"?: boolean;
     }
@@ -132,6 +155,7 @@ declare namespace LocalJSX {
         "progress-bar": ProgressBar;
         "radio-button": RadioButton;
         "radio-button-group": RadioButtonGroup;
+        "star-rating": StarRating;
         "toggle-button": ToggleButton;
     }
 }
@@ -144,6 +168,7 @@ declare module "@stencil/core" {
             "progress-bar": LocalJSX.ProgressBar & JSXBase.HTMLAttributes<HTMLProgressBarElement>;
             "radio-button": LocalJSX.RadioButton & JSXBase.HTMLAttributes<HTMLRadioButtonElement>;
             "radio-button-group": LocalJSX.RadioButtonGroup & JSXBase.HTMLAttributes<HTMLRadioButtonGroupElement>;
+            "star-rating": LocalJSX.StarRating & JSXBase.HTMLAttributes<HTMLStarRatingElement>;
             "toggle-button": LocalJSX.ToggleButton & JSXBase.HTMLAttributes<HTMLToggleButtonElement>;
         }
     }

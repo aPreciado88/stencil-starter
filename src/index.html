@@ -10,8 +10,6 @@
   </head>
   <body>
     <div style="margin:auto; width:50%">
-      <my-component first="Stencil" middle="Test," last="'Don't call me a framework' JS"></my-component>
-      <br/>
       <progress-bar></progress-bar>
       <br/>
       <toggle-button></toggle-button>
@@ -21,8 +19,37 @@
         <radio-button label="Rob"></radio-button>
         <radio-button label="Jon"></radio-button>
       </radio-button-group>
-      <br />
-      <emoji-rain></emoji-rain>
+      <star-rating max-stars="5" current-rating="3" color="#345eeb"></star-rating>
     </div>
+
+    Press button to make it rain emojis!
+    <emoji-rain id="rainmaker" drops="200"></emoji-rain>
+    
+    <section>
+      <button onclick="rain(this, false)" id="button-rain">Make it rain!</button>
+    </section>
+
   </body>
+  <style>
+    button:hover, button:focus {
+      background-color: #345eeb;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    </style>
+    
+    <script>
+      var rainmaker = document.getElementById('rainmaker');
+    
+      function rain(button) {
+        if (rainmaker.active && button.innerHTML === "OMG stop the rain!") {
+          rainmaker.stopTheRain();
+          button.innerHTML = "Make it rain!";
+        } else {
+          rainmaker.makeItRain();
+          button.innerHTML = "OMG stop the rain!";
+        }
+      }
+    </script>
 </html>

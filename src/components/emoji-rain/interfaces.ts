@@ -6,4 +6,5 @@ export interface Emoji {
     speed: number,
     opacity: number,
     opacitySpeed: number,
+    arrayIndex: number,
 }

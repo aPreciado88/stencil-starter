@@ -11,13 +11,13 @@ Renders a radio button
 | Attribute              | Description                                    | Type                |
 | ---------------------- | ---------------------------------------------- | ------------------- |
 | `checked`              | When `true`, the component is checked.         | `boolean`           |
-| `label`                | Stores the button's label string               | `string`           |
+| `label`                | Stores the button's label string               | `string`            |
 
 ## Events
 
 | Event                           | Description                                 | Type                |
 | ------------------------------- | ------------------------------------------- | ------------------- |
-| `radioButtonClick`              | Fires when the radio button is checked.     | `EventEmitter<void>` |
+| `radioButtonClick`              | Fires when the radio button is checked.     | `EventEmitter<void>`|
 
 ----------------------------------------------
 
